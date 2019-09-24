@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        body{
+            background:cadetblue url("img/background.jpg");
+        }
+        #wrapper{
+            width: 640px;
+            height: 640px;
+            margin: 50px auto;
+            background-color: rgba(210,204,204,.7);
+            border-radius: 1em;
+            box-shadow: 5px 5px 5px rgba(0,0,0,.3);
+            position: relative;
+            background-image: url("img/border.png");
+        }
+        .border{
+            width: 150px;
+            height: 200px;
+            margin: 5px;
+            position: absolute;
+        }
+        .outer{
+            width: 150px;
+            height: 200px;
+            border-radius: 1em;
+            box-shadow: 5px 5px 5px rgba(0,0,0,.3);
+            position: absolute;
+        }
+        .inner{
+            width: 150px;
+            height: 200px;
+            border-radius: 1em;
+            box-shadow: 5px 5px 5px rgba(0,0,0,.3);
+            position: absolute;
+        }
+
+        @keyframes outer {
+            0%{transform: rotateY(0deg)}
+            50%{transform: rotateY(90deg)}
+            100%{transform: rotateY(90deg)}
+        }
+        @keyframes inner {
+            0%{transform: rotateY(180deg)}
+            50%{transform: rotateY(270deg)}
+            100%{transform: rotateY(360deg)}
+        }
+        @keyframes outerBack {
+            0%{transform: rotateY(0deg)}
+            50%{transform: rotateY(-90deg)}
+            100%{transform: rotateY(-180deg)}
+        }
+        @keyframes innerBack {
+            0%{transform: rotateY(-90deg)}
+            50%{transform: rotateY(-90deg)}
+            100%{transform: rotateY(-180deg)}
+        }
+        @keyframes rotateImg {
+            0% {
+                transform: rotateZ(0)
+            }
+            100% {
+                transform: rotateZ(360deg)
+            }
+        }
+
+        #imgDiv{
+            margin-left: 1300px;
+            margin-top: -680px;
+            position: relative;
+        }
+        #imgDiv img{
+            width: 50px;
+            height: 50px;
+        }
+        #pointOut{
+            margin-left: 1300px;
+            margin-top: -350px;
+            width: 50px;
+            height: 50px;
+            position: relative;
+        }
+        #pointOut img{
+            width: 50px;
+            height: 50px;
+        }
+        #thingDiv{
+            border: 5px dotted darkslateblue;
+            border-radius: 2em;
+            width:350px;
+            height: 200px;
+            margin-left: 20px;
+            position: relative;
+            box-shadow: 5px 5px 5px rgba(0,0,0,.3);
+            background-image: url("img/border1.png");
+        }
+        #thingDiv img{
+            width: 100px;
+            height: 100px;
+        }
+        #time{
+            width: 100px;
+            height: 100px;
+            margin-left: 50px;
+            margin-top: 50px;
+            text-align: center;
+            color: #cccccc;
+            font-size: 30px;
+            font-weight: bold;
+            font-family: "Fira Code Light";
+            position: relative;
+            list-style: none;
+        }
+        #time img{
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            z-index: -1;
+            animation: rotateImg 2s infinite linear;
+        }
+        #time span{
+            position: absolute;
+            text-align: center;
+            margin-left:84px;
+            margin-top: 78px;
+        }
+        #startGame{
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+            background:rgba(0,0,0,0.7);
+        }
+        #startGame img{
+            display: block;
+            width: 500px;
+            height: 500px;
+            margin: 100px auto;
+        }
+        #endGameFail{
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+            background:rgba(0,0,0,0.7);
+            text-align: center;
+            font-size: 50px;
+            font-weight: bold;
+            color: #cccccc;
+        }
+        #endGameFail img{
+            width: 100%;
+            height: 100%;
+        }
+        #endGameSuccess{
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+            background:rgba(0,0,0,0.7);
+            text-align: center;
+            font-size: 50px;
+            font-weight: bold;
+            color: #cccccc;
+        }
+        #endGameSuccess img{
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="wrapper">
+        <div class="border">
+            <img class="inner" src="img/2.jpg" alt="" >
+            <img class="outer" src="img/1.jpg" alt="" onclick="chooseCard(0)">
+        </div>
+        <div class="border">
+            <img class="inner" src="img/3.jpg" alt="" >
+            <img class="outer" src="img/1.jpg" alt="" onclick="chooseCard(1)">
+        </div>
+        <div class="border">
+            <img class="inner" src="img/4.jpg" alt="" >
+            <img class="outer" src="img/1.jpg" alt="" onclick="chooseCard(2)">
+        </div>
+        <div class="border">
+            <img class="inner" src="img/5.jpg" alt="" >
+            <img class="outer" src="img/1.jpg" alt="" onclick="chooseCard(3)">
+        </div>
+        <div class="border">
+            <img class="inner" src="img/6.jpg" alt="" >
+            <img class="outer" src="img/1.jpg" alt="" onclick="chooseCard(4)">
+        </div>
+        <div class="border">
+            <img class="inner" src="img/7.jpg" alt="" >
+            <img class="outer" src="img/1.jpg" alt="" onclick="chooseCard(5)">
+        </div>
+        <div class="border">
+            <img class="inner"  src="img/2.jpg" alt="" >
+            <img class="outer" src="img/1.jpg" alt="" onclick="chooseCard(6)">
+        </div>
+        <div class="border">
+            <img class="inner" src="img/3.jpg" alt="" >
+            <img class="outer" src="img/1.jpg" alt="" onclick="chooseCard(7)">
+        </div>
+        <div class="border">
+            <img class="inner" src="img/4.jpg" alt="" >
+            <img class="outer" src="img/1.jpg" alt="" onclick="chooseCard(8)">
+        </div>
+        <div class="border">
+            <img class="inner" src="img/5.jpg" alt="" >
+            <img class="outer" src="img/1.jpg" alt="" onclick="chooseCard(9)">
+        </div>
+        <div class="border">
+            <img class="inner" src="img/6.jpg" alt="" >
+            <img class="outer" src="img/1.jpg" alt="" onclick="chooseCard(10)">
+        </div>
+        <div class="border">
+            <img class="inner" src="img/7.jpg" alt="" >
+            <img class="outer" src="img/1.jpg" alt="" onclick="chooseCard(11)">
+        </div>
+    </div>
+    
+    <div id="imgDiv">
+        <img src="img/button.png" alt="" onclick="replayGame()">
+    </div>
+    <div id="thingDiv" >
+    </div>
+    <div id="time">
+        <span id="timeSpan">80</span>
+        <img src="img/time.png" alt="">
+    </div>
+
+    <div id="pointOut" onclick="pointOut()">
+        <img src="img/point.png" alt="">
+    </div>
+    <dialog id="startGame" open>
+        <img  id="startGameImg" src="img/border.png" alt="">
+    </dialog>
+
+    <dialog id="endGameFail" onclose="">
+        收集原石失败，点击屏幕重新开始！
+        <img  id="endGameFailImg" src="img/background1.jpg" alt="">
+    </dialog>
+
+    <dialog id="endGameSuccess" onclose="">
+        恭喜你！击败了灭霸！点击屏幕重新开始！
+        <img  id="endGameSuccessImg" src="img/background2.jpg" alt="">
+    </dialog>
+
+    <script>
+        var firstImg = document.getElementsByClassName('outer');
+        var secondImg = document.getElementsByClassName('inner');
+        var border = document.getElementsByClassName('border');
+        var thingDiv = document.getElementById('thingDiv');
+        var timeSpan =document.getElementById('timeSpan');
+        var startGame = document.getElementById('startGame');
+        var startGameImg = document.getElementById('startGameImg');
+        var endGameFail = document.getElementById('endGameFail');
+        var endGameSuccess = document.getElementById('endGameSuccess');
+        var totalClick = 0; //图片点击次数;
+        var firstChoose; //第一次图片选择；
+        var secondChoose; //第二次图片选择；
+        var match = 0; //匹配对数;
+        var arr = [];
+        var timer = null; //翻转时的计时器;
+        var timer1 = null; //时间计时器;
+        var timer2 = null;
+        var time = 80; //设置倒计时为80s;
+        var time1 = 2;
+        var gemstone = 'img/thing1.png'; //写入宝石图片地址，用于匹配之后的添加;
+
+        //倒计时
+        function countdown () {
+            time--;
+            timeSpan.innerHTML = time;
+            if(time <= 0) {
+                endGameFail.open = true;
+                clearInterval(timer1);
+            }
+        }
+
+        //提示倒计时
+        function pointDown () {
+            time1--;
+            if(time1 <= 0) {
+                for(var i = 0; i < 12; i++) {
+                    firstImg[i].style.animation = 'innerBack 1s linear both';
+                    secondImg[i].style.animation = 'outerBack 1s linear both';
+                }
+                clearInterval(timer2);
+            }
+        }
+
+        //开始游戏,触发倒计时
+        startGameImg.onclick = function () {
+            timer1 = window.setInterval("countdown()",1000);
+            startGame.open = false;
+        };
+        //开始游戏界面按钮点击
+        startGameImg.onmouseover = function () {
+            this.style.animation = 'rotateImg 2s infinite linear';
+        };
+        //游戏失败重置界面；
+        endGameFail.onclick = function () {
+            location.reload();
+        };
+        //游戏成功重置界面;
+        endGameSuccess.onclick = function () {
+            location.reload();
+        };
+        //提示
+        function pointOut () {
+            clearInterval(timer2);
+            for(var i = 0; i < 12; i++) {
+                firstImg[i].style.animation = 'outer 1s linear both';
+                secondImg[i].style.animation = 'inner 1s linear both';
+            }
+            timer2 = window.setInterval("pointDown()",1000);
+        }
+
+        //把图片写入数组
+        for(var i = 0; i < 12; i++) {
+            arr[i] = secondImg[i].src;
+        }
+        //给棋牌一个初始位置
+        for(var i = 0; i < 12; i++) {
+            if(i <= 3) {
+                border[i].style.left = 160 * i + 'px';
+                border[i].style.top = 6 + 'px';
+            }
+            if(i > 3 && i <=7) {
+                border[i].style.left = 160 *(i-4) + 'px';
+                border[i].style.top = 214 + 'px';
+            }
+            if(i > 7 && i <=12) {
+                border[i].style.left = 160 * (i-8) + 'px';
+                border[i].style.top = 424  + 'px';
+            }
+        }
+        //重置洗牌，直接根据牌的style.left对牌进行重置
+        function replayGame() {
+            for(var i = border.length - 1; i >= 0; i--) {
+                var random = parseInt(Math.random() * i);
+                var temp = border[i].style.left;
+                border[i].style.left = border[random].style.left;
+                border[random].style.left = temp;
+                var temp1 = border[i].style.top;
+                border[i].style.top = border[random].style.top;
+                border[random].style.top = temp1;
+                border[i].style.transition = 'all 3s';
+                border[random].style.transition = 'all 3s';
+            }
+        }
+        function startTime () {
+            timer = setInterval(control,1000);
+        }
+        function stopTime() {
+            clearInterval(timer);
+        }
+        //前两次图片点击的情况
+        function chooseCard(index) {
+            console.log(totalClick);
+            if(totalClick == 0) {
+                firstChoose = index;
+                arr[index] = secondImg[index].src;
+                firstImg[index].style.animation = 'outer 1s linear both';
+                secondImg[index].style.animation = 'inner 1s linear both';
+                border[index].style.pointerEvents = 'none';
+                totalClick = 1;
+            }
+            else if(totalClick == 1){
+                totalClick = 2;
+                secondChoose = index;
+                arr[index] = secondImg[index].src;
+                firstImg[index].style.animation = 'outer 1s linear both';
+                secondImg[index].style.animation = 'inner 1s linear both';
+                startTime();
+            }
+        }
+        //判断两次点击的图片
+        function control () {
+            stopTime();
+            //两次点击相同
+            if(arr[firstChoose] == arr[secondChoose]) {
+                match++;
+                var img = document.createElement('img');
+                img.src = gemstone;
+                thingDiv.appendChild(img);
+                totalClick = 0;
+                secondImg[firstChoose].src = '';
+                secondImg[secondChoose].src = '';
+                firstImg[firstChoose].src = '';
+                firstImg[secondChoose].src = '';
+                border[firstChoose].style.display = 'none';
+                border[secondChoose].style.display = 'none';
+                border[firstChoose].style.pointerEvents = 'painted';
+            }
+            //两次点击不同
+            else if(arr[firstChoose] != arr[secondChoose]) {
+                totalClick = 0;
+                secondImg[firstChoose].style.animation = 'outerBack 0.5s linear both';
+                secondImg[secondChoose].style.animation = 'outerBack 0.5s linear both';
+                firstImg[firstChoose].style.animation = 'innerBack 0.5s linear both';
+                firstImg[secondChoose].style.animation = 'innerBack 0.5s linear both';
+                border[firstChoose].style.pointerEvents = 'painted';
+            }
+            //全部匹配成功
+            if(match == arr.length/2) {
+                endGameSuccess.open = true;
+            }
+        }
+
+    </script>
+</body>
+</html>
